@@ -1,4 +1,4 @@
--- SQL Sales Practice - Version 1
+-- SQL Sales Practice - Version 2
 -- Beginner SQL Project
 
 -- 1. Create the sales table
@@ -52,3 +52,37 @@ FROM sales;
 SELECT category, SUM(quantity) AS total_quantity
 FROM sales
 GROUP BY category;
+
+-- Version 2 Practice
+
+-- 10. Show products with quantity 3 or more
+SELECT product, quantity
+FROM sales
+WHERE quantity >= 3;
+
+-- 11. Sort records by quantity from highest to lowest
+SELECT product, category, quantity
+FROM sales
+ORDER BY quantity DESC;
+
+-- 12. Find the highest product price
+SELECT MAX(price) AS highest_price
+FROM sales;
+
+-- 13. Find the lowest product price
+SELECT MIN(price) AS lowest_price
+FROM sales;
+
+-- 14. Count the total number of sales records
+SELECT COUNT(*) AS total_records
+FROM sales;
+
+-- 15. Find the average quantity sold
+SELECT AVG(quantity) AS average_quantity
+FROM sales;
+
+-- 16. Show higher-priced products as an extra beginner challenge
+SELECT product, price
+FROM sales
+WHERE price >= 5000
+ORDER BY price DESC;
