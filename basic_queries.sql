@@ -1,4 +1,4 @@
--- SQL Sales Practice - Version 2
+-- SQL Sales Practice - Version 3
 -- Beginner SQL Project
 
 -- 1. Create the sales table
@@ -21,68 +21,89 @@ INSERT INTO sales (id, product, category, quantity, price) VALUES
 (7, 'Office Chair', 'Furniture', 2, 6500.00),
 (8, 'Study Table', 'Furniture', 1, 8500.00);
 
--- 3. Display all records
-SELECT *
-FROM sales;
+-- Version 1: Basic queries
 
--- 4. Show only Electronics products
+SELECT * FROM sales;
+
 SELECT *
 FROM sales
 WHERE category = 'Electronics';
 
--- 5. Find products with price greater than 1000
 SELECT product, price
 FROM sales
 WHERE price > 1000;
 
--- 6. Sort products from highest to lowest price
 SELECT product, price
 FROM sales
 ORDER BY price DESC;
 
--- 7. Calculate total quantity sold
 SELECT SUM(quantity) AS total_quantity_sold
 FROM sales;
 
--- 8. Calculate average product price
 SELECT AVG(price) AS average_price
 FROM sales;
 
--- 9. Find category-wise total quantity sold
 SELECT category, SUM(quantity) AS total_quantity
 FROM sales
 GROUP BY category;
 
--- Version 2 Practice
+-- Version 2: Filtering, sorting and aggregate practice
 
--- 10. Show products with quantity 3 or more
 SELECT product, quantity
 FROM sales
 WHERE quantity >= 3;
 
--- 11. Sort records by quantity from highest to lowest
 SELECT product, category, quantity
 FROM sales
 ORDER BY quantity DESC;
 
--- 12. Find the highest product price
 SELECT MAX(price) AS highest_price
 FROM sales;
 
--- 13. Find the lowest product price
 SELECT MIN(price) AS lowest_price
 FROM sales;
 
--- 14. Count the total number of sales records
 SELECT COUNT(*) AS total_records
 FROM sales;
 
--- 15. Find the average quantity sold
 SELECT AVG(quantity) AS average_quantity
 FROM sales;
 
--- 16. Show higher-priced products as an extra beginner challenge
 SELECT product, price
 FROM sales
 WHERE price >= 5000
 ORDER BY price DESC;
+
+-- Version 3: First INNER JOIN
+
+-- Create a second table for category information
+CREATE TABLE categories (
+    category_id INT PRIMARY KEY,
+    category_name VARCHAR(50)
+);
+
+INSERT INTO categories (category_id, category_name) VALUES
+(1, 'Electronics'),
+(2, 'Stationery'),
+(3, 'Furniture');
+
+-- 17. Join sales with categories
+SELECT
+    s.product,
+    c.category_name,
+    s.quantity,
+    s.price
+FROM sales AS s
+INNER JOIN categories AS c
+    ON s.category = c.category_name;
+
+-- 18. Beginner challenge: sort the joined result by price
+SELECT
+    s.product,
+    c.category_name,
+    s.quantity,
+    s.price
+FROM sales AS s
+INNER JOIN categories AS c
+    ON s.category = c.category_name
+ORDER BY s.price DESC;
