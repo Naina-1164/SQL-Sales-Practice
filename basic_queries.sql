@@ -107,3 +107,16 @@ FROM sales AS s
 INNER JOIN categories AS c
     ON s.category = c.category_name
 ORDER BY s.price DESC;
+
+
+-- Version 4: INNER JOIN + GROUP BY
+
+-- 19. Calculate category-wise total sales using the joined tables
+SELECT
+    c.category_name,
+    SUM(s.quantity * s.price) AS total_sales
+FROM sales AS s
+INNER JOIN categories AS c
+    ON s.category = c.category_name
+GROUP BY c.category_name
+ORDER BY total_sales DESC;
