@@ -1,42 +1,42 @@
 # SQL Sales Practice
 
-A beginner-friendly SQL practice project created to build a strong foundation in SQL using a small sales dataset.
+A beginner-friendly SQL practice project that I am improving step by step using a small sales dataset.
 
 ## Version 1 - Basic SQL Queries
 
-The first version focused on:
-
-- CREATE TABLE
-- INSERT INTO
-- SELECT
-- WHERE
-- ORDER BY
-- SUM()
-- AVG()
-- GROUP BY
+The first version focused on `CREATE TABLE`, `INSERT INTO`, `SELECT`, `WHERE`, `ORDER BY`, `SUM()`, `AVG()`, and `GROUP BY`.
 
 ## Version 2 - Filtering, Sorting and Aggregates
 
-I improved the same project instead of creating a new advanced project. Version 2 adds more practice with:
+Version 2 added more practice with comparison conditions, sorting, `MAX()`, `MIN()`, `COUNT()`, averages, and simple aliases.
 
-- Filtering using comparison conditions
-- Sorting results with ORDER BY
-- MAX()
-- MIN()
-- COUNT()
-- More AVG() practice
-- Simple aliases using AS
+## Version 3 - First INNER JOIN
 
-## Version 2 Practice Questions
+Version 3 introduces a second table called `categories` and uses a simple `INNER JOIN` to combine it with the existing `sales` table.
 
-1. Show products with quantity 3 or more.
-2. Sort products by quantity from highest to lowest.
-3. Find the highest product price.
-4. Find the lowest product price.
-5. Count the total number of sales records.
-6. Calculate the average quantity sold.
-7. Find products priced at 5000 or above.
+### New Concepts Practiced
+
+- Creating a second table
+- Basic `PRIMARY KEY`
+- `INNER JOIN`
+- `ON` condition
+- Table aliases such as `s` and `c`
+- Sorting a joined result with `ORDER BY`
+
+### Version 3 Practice
+
+The `categories` table contains:
+
+- Electronics
+- Stationery
+- Furniture
+
+The first JOIN displays each product with its category, quantity, and price. A second query repeats the JOIN and sorts the result from highest to lowest price.
 
 ## Learning Progress
 
-This repository shows my SQL learning step by step. I am currently strengthening basic filtering, sorting, and aggregate functions before moving to concepts such as joins, subqueries, CTEs, and window functions.
+**Version 1:** Basic queries and aggregate functions  
+**Version 2:** More filtering, sorting, and aggregate practice  
+**Version 3:** First two-table `INNER JOIN`
+
+The project is intentionally progressing gradually. More complex multi-table analysis, subqueries, CTEs, and window functions can be introduced later.
