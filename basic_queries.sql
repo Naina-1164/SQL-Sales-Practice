@@ -1,4 +1,4 @@
--- SQL Sales Practice - Version 3
+-- SQL Sales Practice - Version 5
 -- Beginner SQL Project
 
 -- 1. Create the sales table
@@ -76,7 +76,6 @@ ORDER BY price DESC;
 
 -- Version 3: First INNER JOIN
 
--- Create a second table for category information
 CREATE TABLE categories (
     category_id INT PRIMARY KEY,
     category_name VARCHAR(50)
@@ -97,7 +96,7 @@ FROM sales AS s
 INNER JOIN categories AS c
     ON s.category = c.category_name;
 
--- 18. Beginner challenge: sort the joined result by price
+-- 18. Sort the joined result by price
 SELECT
     s.product,
     c.category_name,
@@ -108,10 +107,9 @@ INNER JOIN categories AS c
     ON s.category = c.category_name
 ORDER BY s.price DESC;
 
-
 -- Version 4: INNER JOIN + GROUP BY
 
--- 19. Calculate category-wise total sales using the joined tables
+-- 19. Calculate category-wise total sales
 SELECT
     c.category_name,
     SUM(s.quantity * s.price) AS total_sales
@@ -119,4 +117,28 @@ FROM sales AS s
 INNER JOIN categories AS c
     ON s.category = c.category_name
 GROUP BY c.category_name
+ORDER BY total_sales DESC;
+
+-- Version 5: First HAVING practice
+
+-- 20. Show only categories with total sales greater than 10000
+SELECT
+    c.category_name,
+    SUM(s.quantity * s.price) AS total_sales
+FROM sales AS s
+INNER JOIN categories AS c
+    ON s.category = c.category_name
+GROUP BY c.category_name
+HAVING SUM(s.quantity * s.price) > 10000
+ORDER BY total_sales DESC;
+
+-- 21. Beginner experiment: lower the threshold to 5000
+SELECT
+    c.category_name,
+    SUM(s.quantity * s.price) AS total_sales
+FROM sales AS s
+INNER JOIN categories AS c
+    ON s.category = c.category_name
+GROUP BY c.category_name
+HAVING SUM(s.quantity * s.price) > 5000
 ORDER BY total_sales DESC;
