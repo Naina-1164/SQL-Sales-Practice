@@ -1,4 +1,4 @@
--- SQL Sales Practice - Version 5
+-- SQL Sales Practice - Version 6
 -- Beginner SQL Project
 
 -- 1. Create the sales table
@@ -139,6 +139,21 @@ SELECT
 FROM sales AS s
 INNER JOIN categories AS c
     ON s.category = c.category_name
+GROUP BY c.category_name
+HAVING SUM(s.quantity * s.price) > 5000
+ORDER BY total_sales DESC;
+
+
+-- Version 6: WHERE + GROUP BY + HAVING
+
+-- 22. Filter rows first, then filter the grouped results
+SELECT
+    c.category_name,
+    SUM(s.quantity * s.price) AS total_sales
+FROM sales AS s
+INNER JOIN categories AS c
+    ON s.category = c.category_name
+WHERE s.price >= 1000
 GROUP BY c.category_name
 HAVING SUM(s.quantity * s.price) > 5000
 ORDER BY total_sales DESC;
